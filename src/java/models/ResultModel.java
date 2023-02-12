@@ -89,14 +89,14 @@ public class ResultModel {
     }
 
     public void setTimeStartResult() {
-        String text =  this.timeStart + " " + this.dataStart;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss.SSS");
+        String text =  this.dataStart + " " + this.timeStart;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
         this.timeStartResult = LocalDateTime.parse(text, formatter);
     }
 
     public void setTimeEndResult() {
-        String text =  this.timeEnd + " " + this.dataEnd;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss.SSS");
+        String text =  this.dataEnd + " " + this.timeEnd;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
         this.timeEndResult = LocalDateTime.parse(text, formatter);
     }
 

@@ -35,6 +35,7 @@ public class TimeStartModel {
         return "StartTime{" +
                 "abr='" + racerAbbreviation + '\'' +
                 ", startTime='" + startTime + '\'' +
+                ", startData='" + startData + '\'' +
                 '}';
     }
 }

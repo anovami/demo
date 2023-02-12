@@ -7,6 +7,7 @@ import models.TimeEndModel;
 import models.TimeStartModel;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ public class Service {
     List<TimeEndModel> timeEndModels = dao.getEndTimeInfo();
 
     public String getStartTime(ResultModel resultModel) {
+
         return timeStartModels.stream()
                 .filter(timeStartModel -> timeStartModel.getRacerAbbreviation().equals(resultModel.getRacerAbbreviation()))
                 .findAny().orElse(null).getStartTime();
@@ -71,17 +73,20 @@ public class Service {
                 .peek(r -> {
                     r.setTimeStart(getStartTime(r));
                     r.setDataStart(findRacerStartDate(r));
+                    r.setTimeStartResult();
                 })
                 .peek(ResultModel::setTimeStartResult)
                 //TODO: в следующем .peek делаешь все тоже самое, сетаешь в результирующую модель время конца и дату конца.
                 .peek(r -> {
                     r.setTimeEnd(getEndTime(r));
                     r.setDataEnd(findRacerEndDate(r));
+                    r.setTimeEndResult();
                 })
                 .peek(ResultModel::getTimeEndResult)
                 //TODO: теперь в еще одном .peek ты можешь засетать дюратион, который сразу рассчитывается в ResultModel --  .peek(ResultModel::setDurationTime)
                 .peek(ResultModel::setRaceDuration)
                 //TODO: и в следующем .peek уже можно применить метод сортировки по дюратион .sorted(Comparator.comparing(ResultModel::getDurationTime))
+                .sorted(Comparator.comparing(ResultModel::getRaceDuration))
                 .collect(Collectors.toList());
 
 

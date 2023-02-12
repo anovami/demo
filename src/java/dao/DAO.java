@@ -54,9 +54,9 @@ public class DAO {
                             .map(line -> line.split("_"))
                             .map(str -> {
                                 TimeStartModel timeStartModel = new TimeStartModel();
-                                timeStartModel.setRacerAbbreviation(str[0].substring(0,4));
+                                timeStartModel.setRacerAbbreviation(str[0].substring(0,3));
                                 timeStartModel.setStartTime(str[1]);
-                                timeStartModel.setStartData(str[0].substring(4));
+                                timeStartModel.setStartData(str[0].substring(3));
                                 return timeStartModel;
                             })
                             .collect(Collectors.toList());
@@ -84,9 +84,9 @@ public class DAO {
                             .map(line -> line.split("_"))
                             .map(str -> {
                                 TimeEndModel timeEndModel = new TimeEndModel();
-                                timeEndModel.setRacerAbbreviation(str[0].substring(0,4));
+                                timeEndModel.setRacerAbbreviation(str[0].substring(0,3));
                                 timeEndModel.setEndTime(str[1]);
-                                timeEndModel.setEndData(str[0].substring(4));
+                                timeEndModel.setEndData(str[0].substring(3));
                                 return timeEndModel;
                             }).collect(Collectors.toList());
 
