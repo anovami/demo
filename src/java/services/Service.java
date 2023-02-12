@@ -71,14 +71,14 @@ public class Service {
                 .peek(r -> {
                     r.setTimeStart(getStartTime(r));
                     r.setDataStart(findRacerStartDate(r));
-                    r.setTimeStartResult();
                 })
+                .peek(ResultModel::setTimeStartResult)
                 //TODO: в следующем .peek делаешь все тоже самое, сетаешь в результирующую модель время конца и дату конца.
                 .peek(r -> {
                     r.setTimeEnd(getEndTime(r));
                     r.setDataEnd(findRacerEndDate(r));
-                    r.setTimeEndResult();
                 })
+                .peek(ResultModel::getTimeEndResult)
                 //TODO: теперь в еще одном .peek ты можешь засетать дюратион, который сразу рассчитывается в ResultModel --  .peek(ResultModel::setDurationTime)
                 .peek(ResultModel::setRaceDuration)
                 //TODO: и в следующем .peek уже можно применить метод сортировки по дюратион .sorted(Comparator.comparing(ResultModel::getDurationTime))
