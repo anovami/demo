@@ -10,6 +10,7 @@ import java.util.List;
 public class ResultModel {
     private String racerAbbreviation;
     private String racerName;
+    private String racerTeam;
     private String timeStart;
     private String timeEnd;
     private String dataStart;
@@ -25,6 +26,10 @@ public class ResultModel {
 
     public String getRacerName() {
         return racerName;
+    }
+
+    public String getRacerTeam() {
+        return racerTeam;
     }
 
     public String getTimeStart() {
@@ -63,6 +68,10 @@ public class ResultModel {
         this.racerAbbreviation = racerAbbreviation;
     }
 
+    public void setRacerTeam(String racerTeam) {
+        this.racerTeam = racerTeam;
+    }
+
     public void setTimeStart(String timeStart) {
         this.timeStart = timeStart;
     }
@@ -91,7 +100,7 @@ public class ResultModel {
         this.timeEndResult = LocalDateTime.parse(text, formatter);
     }
 
-    public void setRaceDuration(Date raceDuration) {
+    public void setRaceDuration() {
         this.raceDuration = Duration.between(this.timeStartResult, this.timeEndResult);
     }
 

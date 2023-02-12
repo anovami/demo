@@ -30,7 +30,7 @@ public class DAO {
                                 racerModel.setRacerAbbreviation(str[0]);
                                 racerModel.setRacerName(str[1]);
                                 racerModel.setRacerTeam(str[2]);
-                                System.out.println(racerModel);
+//                                System.out.println(racerModel);
                                 return racerModel;
                             }).collect(Collectors.toList());
 
